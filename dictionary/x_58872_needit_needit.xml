@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element audit="true" extends="task" label="NeedIt" max_length="40" name="x_58872_needit_needit" sizeclass="2" type="collection">
+        <element choice="2" label="Resolution" max_length="40" name="new_field_1" type="integer">
+            <choice>
+                <element label="Monitor is being returned. Sent replacement monitor and return kit/label"/>
+                <element label="Monitor is being returned. Sent replacement monitor and return kit/label" sequence="0"/>
+                <element label="Monitor is being returned. Sent replacement monitor and return kit/label" sequence="0"/>
+                <element label="Monitor is being returned. Sent replacement monitor and return kit/label" sequence="0"/>
+            </choice>
+        </element>
+        <element choice="1" display="true" label="Product Status" mandatory="true" max_length="40" name="product_status" type="choice">
+            <choice>
+                <element label="as expected" value="working as expected"/>
+                <element label="Monitor is being returned. Sent replacement monitor and return kit/label." value="Monitor is being returned. Sent replacement monitor and return kit/label."/>
+                <element label="unexpected" value="unexpected behavior"/>
+            </choice>
+        </element>
+        <element label="Requested for" mandatory="true" max_length="32" name="u_requested_for" reference="sys_user" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="cc_cs" label="Request to" mandatory="true" max_length="40" name="u_request_to" type="string">
+            <choice>
+                <element label="Connected Care Customer Service" sequence="0" value="cc_cs"/>
+                <element label="RR Donnelly" sequence="1" value="rr_donnelly"/>
+                <element label="CVG  Customer Service" sequence="2" value="cvg_cs"/>
+                <element label="CRHF Customer Service" sequence="3" value="crhf_cs"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" dependent="u_request_to" dependent_on_field="u_request_to" label="What needed" mandatory="true" max_length="40" name="u_what_needed" type="string" use_dependent_field="true">
+            <choice>
+                <element dependent_value="rr_donnelly" label="DSL Filter and Tip Card" value="dsl_filter"/>
+                <element dependent_value="cc_cs" label="MyCareLink 24950" sequence="0" value="mcl_24950"/>
+                <element dependent_value="cc_cs" label="MyCareLink 24952" sequence="1" value="mcl_24952"/>
+                <element dependent_value="rr_donnelly" label="WireT" sequence="2" value="wiret"/>
+                <element dependent_value="cc_cs" label="Analog Adapter" sequence="3" value="analog_adapter"/>
+                <element dependent_value="cc_cs" label="Patient Assistant PA96000" sequence="4" value="pa_PA96000"/>
+                <element dependent_value="rr_donnelly" label="Patient ID Card (LINQ)" sequence="5" value="linq_id_card"/>
+            </choice>
+        </element>
+        <element label="When needed" mandatory="true" max_length="40" name="u_when_needed" type="glide_date_time"/>
+    </element>
+</database>
